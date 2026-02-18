@@ -1,0 +1,19 @@
+VERSION = 1,
+
+option EPRC.RunCleanup
+{
+    type = boolean, default = true,
+    page = EPRC_Sandbox, translation = EPRC_RunCleanup,
+}
+
+option EPRC.RestoreSandboxVars
+{
+    type = boolean, default = true,
+    page = EPRC_Sandbox, translation = EPRC_RestoreSandboxVars,
+}
+
+option EPRC.ForceRerun
+{
+    type = boolean, default = false,
+    page = EPRC_Sandbox, translation = EPRC_ForceRerun,
+}

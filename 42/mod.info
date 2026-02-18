@@ -1,0 +1,12 @@
+name=Phobos EPR Cleanup
+id=PhobosEPRCleanup
+description=Utility mod to remove all Extensive Power Rework (EPR) data from save files. Works WITHOUT EPR being loaded. Cleans world modData, restores vanilla ElecShutModifier/WaterShutModifier, resets EPR-modified building power/water state. Requires PhobosLib.
+poster=poster.png
+url=https://github.com/phobosdthorga/mod-pz-epr-cleanup
+authors=phobosgekko
+versionMin=42.14.0
+modversion=1.0.0
+require=\PhobosLib
+loadModAfter=\PhobosLib
+incompatible=\EPR_B42
+category=features

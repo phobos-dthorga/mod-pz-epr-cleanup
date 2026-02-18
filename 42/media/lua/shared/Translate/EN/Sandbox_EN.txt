@@ -1,0 +1,12 @@
+Sandbox_EN = {
+    Sandbox_EPRC_Sandbox = "EPR Cleanup",
+
+    Sandbox_EPRC_RunCleanup = "RUN EPR CLEANUP:",
+    Sandbox_EPRC_RunCleanup_tooltip = "Removes all Extensive Power Rework (EPR) mod data from the save file on next game load. <LINE><LINE> <INDENT:20> Deletes EPR_GridData, EPR_PowerController, EPR_GlobalData, and EGO_GridData from world modData. <LINE> <INDENT:20> Restores ElecShutModifier and WaterShutModifier to pre-EPR values (if enabled). <LINE> <INDENT:20> Resets building power/water state for EPR-connected buildings. <LINE> <INDENT:20> Does NOT require the EPR mod to be loaded. <LINE><LINE> <RGB:0.7,0.7,0.7> ON (default): Cleanup runs on next load. OFF: Cleanup skipped. <RGB:1,1,1>",
+
+    Sandbox_EPRC_RestoreSandboxVars = "RESTORE SANDBOX VARIABLES:",
+    Sandbox_EPRC_RestoreSandboxVars_tooltip = "Attempts to restore ElecShutModifier and WaterShutModifier to their original values before EPR modified them. <LINE><LINE> <INDENT:20> EPR saves original values in its world modData before overwriting them. <LINE> <INDENT:20> If found, these are restored to SandboxVars and persisted to disk. <LINE> <INDENT:20> If not found, sandbox variables are left unchanged (set them manually). <LINE><LINE> <RGB:0.7,0.7,0.7> ON (default): Restore original values. OFF: Leave sandbox variables as-is. <RGB:1,1,1>",
+
+    Sandbox_EPRC_ForceRerun = "FORCE RE-RUN:",
+    Sandbox_EPRC_ForceRerun_tooltip = "Clears the cleanup completion flag and re-runs the EPR data removal on next game load. <LINE><LINE> <INDENT:20> Use this if EPR data was re-introduced after a previous cleanup. <LINE> <INDENT:20> One-shot: resets to OFF after execution. <LINE><LINE> <RGB:1,0.6,0.2> Requires a game restart to take effect. <RGB:1,1,1>",
+}
