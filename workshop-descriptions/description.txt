@@ -1,0 +1,104 @@
+[h1]Phobos EPR Cleanup[/h1]
+A small utility mod that removes all [b]Extensive Power Rework (EPR)[/b] data from your save files, allowing you to cleanly uninstall EPR without lingering side effects.
+
+[b]Does NOT require EPR to be loaded.[/b] In fact, EPR must be disabled first — the mods are declared incompatible and cannot both be active.
+
+[hr][/hr]
+[h2]The Problem[/h2]
+The EPR mod (Workshop ID 3643765614) crashes on load in certain PZ Build 42 versions, leaving orphaned data in save files that causes:
+
+[list]
+[*][b]Power and water never shutting off[/b] — EPR sets ElecShutModifier and WaterShutModifier to max int (2147483647), permanently written to your sandbox options file
+[*][b]Water coolers showing "zone is offline"[/b] — EPR modifies building power/water state which persists without the mod loaded
+[*][b]Orphaned world modData[/b] — EPR_GridData, EPR_PowerController, EPR_GlobalData, and EGO_GridData remain in your save file
+[/list]
+
+[hr][/hr]
+[h2]What It Does[/h2]
+On first game load after enabling this mod, it automatically performs three cleanup steps:
+
+[list]
+[*][b]Restores sandbox variables[/b] — Reads EPR's backed-up original ElecShutModifier/WaterShutModifier values and writes them back to disk, so power and water shut off at the correct in-game day again
+[*][b]Resets building state[/b] — Calls setHasElectricity(false) / setHasWater(false) on all EPR-connected buildings, letting vanilla mechanics re-evaluate power (buildings near working generators will regain power normally)
+[*][b]Removes EPR world modData[/b] — Deletes EPR_GridData, EPR_PowerController, EPR_GlobalData, and EGO_GridData from the save
+[/list]
+
+A modal dialog appears on screen summarising exactly what was cleaned.
+
+[hr][/hr]
+[h2]What It Does NOT Do[/h2]
+[list]
+[*]Does [b]not[/b] scan every world object for EPR_SpriteGenerator markers on individual generators — these orphaned boolean markers are harmless when EPR is not loaded
+[*]Does [b]not[/b] modify save files on disk directly — operates through PZ's normal modData API at runtime
+[*]Buildings not currently loaded in memory (far from the player) may retain EPR state until visited — use Force Re-run if needed
+[/list]
+
+[hr][/hr]
+[h2]Usage[/h2]
+[olist]
+[*]Unsubscribe from or disable EPR (the mods cannot both be active)
+[*]Subscribe to [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3668598865][b]PhobosLib[/b][/url] and [b]PhobosEPRCleanup[/b]
+[*]Enable both mods in your mod list
+[*]Load your save — cleanup runs automatically on first load
+[*]Check the on-screen modal for results
+[*]Unsubscribe from PhobosEPRCleanup (and PhobosLib if no other Phobos mods are installed)
+[/olist]
+
+[hr][/hr]
+[h2]Sandbox Options[/h2]
+[table]
+[tr]
+[th]Option[/th]
+[th]Default[/th]
+[th]Description[/th]
+[/tr]
+[tr]
+[td]Run EPR Cleanup[/td]
+[td]ON[/td]
+[td]Execute full EPR data removal on next load[/td]
+[/tr]
+[tr]
+[td]Restore Sandbox Variables[/td]
+[td]ON[/td]
+[td]Restore ElecShutModifier/WaterShutModifier to pre-EPR values[/td]
+[/tr]
+[tr]
+[td]Force Re-run[/td]
+[td]OFF[/td]
+[td]Clear guard flag and re-run cleanup (one-shot, resets after use)[/td]
+[/tr]
+[/table]
+
+[hr][/hr]
+[h2]Requirements[/h2]
+[list]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3668598865][b]Phobos Shared Library (PhobosLib)[/b][/url] — Required dependency
+[*]Project Zomboid Build 42.14.0+
+[/list]
+
+[hr][/hr]
+[h2]Links[/h2]
+[table]
+[tr]
+[th]Resource[/th]
+[th]Link[/th]
+[/tr]
+[tr]
+[td]Source Code[/td]
+[td][url=https://github.com/phobos-dthorga/mod-pz-epr-cleanup]GitHub Repository[/url][/td]
+[/tr]
+[tr]
+[td]Bug Reports[/td]
+[td][url=https://github.com/phobos-dthorga/mod-pz-epr-cleanup/issues]GitHub Issues[/url] (preferred)[/td]
+[/tr]
+[tr]
+[td]PhobosLib (dependency)[/td]
+[td][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3668598865]Steam Workshop[/url] | [url=https://github.com/phobos-dthorga/mod-pz-phobos-lib]GitHub[/url][/td]
+[/tr]
+[/table]
+
+[i]Please report bugs on [url=https://github.com/phobos-dthorga/mod-pz-epr-cleanup/issues]GitHub Issues[/url] rather than in Workshop comments — it helps track and resolve them faster.[/i]
+
+[hr][/hr]
+[b]Version:[/b] 1.0.0 | [b]Build:[/b] 42.14.0+ | [b]License:[/b] MIT
+[i]by phobosgekko[/i]
