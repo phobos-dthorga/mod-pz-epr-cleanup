@@ -1,3 +1,20 @@
+<!--
+  ________________________________________________________________________
+ / Copyright (c) 2026 Phobos A. D'thorga                                \
+ |                                                                        |
+ |           /\_/\                                                         |
+ |         =/ o o \=    Phobos' PZ Modding                                |
+ |          (  V  )     All rights reserved.                              |
+ |     /\  / \   / \                                                      |
+ |    /  \/   '-'   \   This source code is part of the Phobos            |
+ |   /  /  \  ^  /\  \  mod suite for Project Zomboid (Build 42).         |
+ |  (__/    \_/ \/  \__)                                                  |
+ |     |   | |  | |     Unauthorised copying, modification, or            |
+ |     |___|_|  |_|     distribution of this file is prohibited.          |
+ |                                                                        |
+ \________________________________________________________________________/
+-->
+
 # PhobosEPRCleanup
 
 **Version:** 1.0.0 | **Requires:** Project Zomboid Build 42.14.0+ | PhobosLib 1.3.0+
